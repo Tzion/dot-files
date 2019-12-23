@@ -1,5 +1,4 @@
 filetype plugin indent on
-syntax on
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
@@ -38,13 +37,14 @@ set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
 
 set wildignore+=*/cscope.out
-set wildignore+=*/tags/*
+set wildignore+=*/tags
 
 "-------------------------------------------------------------------------------
 "" Colors & Formatting
 "-------------------------------------------------------------------------------
 
-"colorscheme solarized
+syntax on
+colorscheme xcodedark
 set background=dark
 
 " Showcase comments in italics
@@ -56,4 +56,9 @@ set background=dark
 "-------------------------------------------------------------------------------
 set runtimepath^=~/.vim/bundle/nerdtree
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set rtp+=~/.fzf " Doesn't work
+set rtp+=/.fzf/plugin/fzf.vim " Doesn't work
+set rtp^=~/.vim/bundle/taglist.vim
 
+
+nmap <F8> :TlistToggle<CR>
