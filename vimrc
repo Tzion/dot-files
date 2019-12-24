@@ -60,5 +60,11 @@ set rtp+=~/.fzf " Doesn't work
 set rtp+=/.fzf/plugin/fzf.vim " Doesn't work
 set rtp^=~/.vim/bundle/taglist.vim
 
-
+"------------------------------------------------------------------------------
+"" Key Bindings
+"-----------------------------------------------------------------------------
 nmap <F8> :TlistToggle<CR>
+" Preview file for quickfix list
+noremap <expr> p &buftype==# 'quickfix' ? "\<CR><C-W><C-W>" : 'p'
+" search in all proejct (vimgrep), jump to first result and open quickfix list
+noremap <expr> <Leader>f ":vimgrep /".input("")."/ **\<ESC>:copen<CR>"
