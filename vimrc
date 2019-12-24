@@ -23,6 +23,7 @@ set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
 set number                            " Show line numbers
+set cursorline                        "  Highlight the text line of the cursor with CursorLine hl-CursorLine
 
 " Persistent undo
 set undodir=~/.vim/undo/
@@ -64,7 +65,17 @@ set rtp^=~/.vim/bundle/taglist.vim
 "" Key Bindings
 "-----------------------------------------------------------------------------
 nmap <F8> :TlistToggle<CR>
-" Preview file for quickfix list
+
+" Smart preview in quickfix list
 noremap <expr> p &buftype==# 'quickfix' ? "\<CR><C-W><C-W>" : 'p'
-" search in all proejct (vimgrep), jump to first result and open quickfix list
-noremap <expr> <Leader>f ":vimgrep /".input("")."/ **\<ESC>:copen<CR>"
+map <expr> J &buftype==# 'quickfix' ? 'jp' : 'J'
+map <expr> K &buftype==# 'quickfix' ? 'kp' : 'J'
+
+" Search in all proejct (vimgrep), jump to first result and open quickfix list
+noremap <expr> <Leader>f ":vimgrep /".input("Find Everywhere: ")."/ **\<ESC>:copen<CR>"
+
+" cscope find of word under cursor - results in quickfix:
+noremap <leader>csc :cscope find c <cword><CR> :copen<CR>
+noremap <leader>csd :cscope find d <cword><CR> :copen<CR>
+noremap <leader>csg :cscope find g <cword><CR> :copen<CR>
+set cscopequickfix=c-,d-,g-    " Insert cscope find results to quicklist after clear previos results
