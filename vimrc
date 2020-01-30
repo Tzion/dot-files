@@ -47,6 +47,8 @@ set wildignore+=*/tags
 syntax on
 colorscheme xcodedark
 set background=dark
+hi StatusLine ctermbg=blue ctermfg=green
+hi StatusLineNC ctermfg=green
 
 " Showcase comments in italics
 "highlight Comment cterm=italic gui=italic
