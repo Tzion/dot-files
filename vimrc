@@ -49,6 +49,8 @@ colorscheme xcodedark
 set background=dark
 hi StatusLine ctermbg=blue ctermfg=green
 hi StatusLineNC ctermfg=green
+hi Search ctermbg=yellow ctermfg=black
+
 
 " Showcase comments in italics
 "highlight Comment cterm=italic gui=italic
