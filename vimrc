@@ -59,11 +59,18 @@ hi Search ctermbg=yellow ctermfg=black
 "-------------------------------------------------------------------------------
 "" Plugins
 "-------------------------------------------------------------------------------
-set runtimepath^=~/.vim/bundle/nerdtree
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set rtp+=~/.fzf " Doesn't work
-set rtp+=/.fzf/plugin/fzf.vim " Doesn't work
-set rtp^=~/.vim/bundle/taglist.vim
+"first install Vim-Plug plugins manager
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'vim-scripts/taglist.vim'
+call plug#end()
 
 "------------------------------------------------------------------------------
 "" Key Bindings
