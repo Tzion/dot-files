@@ -40,6 +40,11 @@ set wildignore+=*/node_modules/
 set wildignore+=*/cscope.out
 set wildignore+=*/tags
 
+" auto set tags on startup
+autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif 
+" auto add cscope on startup
+autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif 
+
 "-------------------------------------------------------------------------------
 "" Colors & Formatting
 "-------------------------------------------------------------------------------
@@ -51,10 +56,6 @@ hi StatusLine ctermbg=blue ctermfg=green
 hi WildMenu ctermfg=blue ctermbg=green
 hi StatusLineNC ctermfg=green
 hi Search ctermbg=yellow ctermfg=black
-
-
-" Showcase comments in italics
-"highlight Comment cterm=italic gui=italic
 
 
 "-------------------------------------------------------------------------------
@@ -74,7 +75,7 @@ Plug 'vim-scripts/taglist.vim'
 call plug#end()
 
 "-------------------------------------------------------------------------------
-"" Plugins settings
+"" Plugins preferences
 "-------------------------------------------------------------------------------
 let g:NERDTreeWinPos = "right"
 
