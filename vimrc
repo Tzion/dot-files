@@ -73,10 +73,16 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-scripts/taglist.vim'
 call plug#end()
 
+"-------------------------------------------------------------------------------
+"" Plugins settings
+"-------------------------------------------------------------------------------
+let g:NERDTreeWinPos = "right"
+
 "------------------------------------------------------------------------------
 "" Key Bindings
 "-----------------------------------------------------------------------------
 nmap <F8> :TlistToggle<CR>
+map <F6>  :NERDTreeToggle<CR>
 
 " Smart preview in quickfix list
 noremap <expr> p &buftype==# 'quickfix' ? "\<CR><C-W><C-W>" : 'p'
