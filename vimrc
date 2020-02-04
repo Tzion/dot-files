@@ -93,7 +93,9 @@ map <expr> K &buftype==# 'quickfix' ? 'kp' : 'J'
 noremap <expr> <Leader>f ":vimgrep /".input("Find Everywhere: ")."/ **\<ESC>:copen<CR>"
 
 " cscope find of word under cursor - results in quickfix:
-noremap <leader>csc :cscope find c <cword><CR> :copen<CR>
-noremap <leader>csd :cscope find d <cword><CR> :copen<CR>
-noremap <leader>csg :cscope find g <cword><CR> :copen<CR>
-set cscopequickfix=c-,d-,g-    " Insert cscope find results to quicklist after clear previos results
+noremap <leader>cc :cscope find c <cword><CR> :copen<CR>
+noremap <leader>cd :cscope find d <cword><CR> :copen<CR>
+noremap <leader>cg :cscope find g <cword><CR> :copen<CR>
+noremap <leader>ca :cscope find a <cword><CR> :copen<CR>
+noremap <leader>cs :cscope find s <cword><CR> :copen<CR>
+set cscopequickfix=c-,d-,g-,a-,s-    " Insert cscope find results to quicklist after clear previos results
