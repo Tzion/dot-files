@@ -40,10 +40,8 @@ set wildignore+=*/node_modules/
 set wildignore+=*/cscope.out
 set wildignore+=*/tags
 
-" auto set tags on startup
-autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif 
-" auto add cscope on startup
-autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif 
+autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif                "auto set tags on startup
+autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif  "auto add cscope on startup
 
 "-------------------------------------------------------------------------------
 "" Colors & Formatting
@@ -72,12 +70,15 @@ Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-scripts/taglist.vim'
+Plug 'hari-rangarajan/CCTree'
 call plug#end()
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
 let g:NERDTreeWinPos = "right"
+autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.out" | endif         "auto load CCTree on startup
+
 
 "------------------------------------------------------------------------------
 "" Key Bindings
