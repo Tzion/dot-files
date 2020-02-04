@@ -48,6 +48,7 @@ syntax on
 colorscheme xcodedark
 set background=dark
 hi StatusLine ctermbg=blue ctermfg=green
+hi WildMenu ctermfg=blue ctermbg=green
 hi StatusLineNC ctermfg=green
 hi Search ctermbg=yellow ctermfg=black
 
