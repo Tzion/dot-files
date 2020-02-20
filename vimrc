@@ -75,6 +75,8 @@ Plug 'hari-rangarajan/CCTree'
 Plug 'vim-airline/vim-airline'
 Plug 'yssl/QFEnter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'w0rp/ale'
+Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
 call plug#end()
 
 "-------------------------------------------------------------------------------
