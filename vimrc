@@ -70,15 +70,26 @@ Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
+Plug 'gabesoft/vim-ags'
 Plug 'hari-rangarajan/CCTree'
 Plug 'vim-airline/vim-airline'
 Plug 'yssl/QFEnter'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
 autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.out" | endif         "auto load CCTree on startup
+" Ag shortcut mappings
+" Search for the word under cursor
+nnoremap <Leader>s :Ags<Space><C-R>=expand('<cword>')<CR><CR>
+" Search for the visually selected text
+vnoremap <Leader>s y:Ags<Space><C-R>='"' . escape(@", '"*?()[]{}.') . '"'<CR><CR>
+" Run Ags
+nnoremap <Leader>a :Ags<Space>
+" Quit Ags
+nnoremap <Leader><Leader>a :AgsQuit<CR>
 
 "------------------------------------------------------------------------------
 "" Key Bindings
