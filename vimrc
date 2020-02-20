@@ -69,21 +69,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
 Plug 'hari-rangarajan/CCTree'
+Plug 'vim-airline/vim-airline'
+Plug 'yssl/QFEnter'
 call plug#end()
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
-let g:NERDTreeWinPos = "right"
 autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.out" | endif         "auto load CCTree on startup
-
 
 "------------------------------------------------------------------------------
 "" Key Bindings
 "-----------------------------------------------------------------------------
-nmap <F8> :TlistToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 map <F6>  :NERDTreeToggle<CR>
 
 " Smart preview in quickfix list
