@@ -79,13 +79,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'yssl/QFEnter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
-Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
+"Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
+Plug 'camspiers/animate.vim'  " Animation for windows movments when using lens
+Plug 'camspiers/lens.vim' "Automatically resizes windows
+Plug 'liuchengxu/vista.vim' "View and search LSP symbols, tags
+Plug 'airblade/vim-gitgutter' "Show git diff and more git stuff
+Plug 'shougo/neocomplete.vim' "Auto completetion pluging
+Plug 'bfrg/vim-qf-preview'
 call plug#end()
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
 autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.out" | endif         "auto load CCTree on startup
+let g:CCTreeRecursiveDepth=0  " CCTree shows in default first degree callers/callee
 " Ag shortcut mappings
 " Search for the word under cursor
 nnoremap <Leader>s :Ags<Space><C-R>=expand('<cword>')<CR><CR>
