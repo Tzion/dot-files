@@ -42,8 +42,9 @@ set wildignore+=*/tags
 
 autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif                "auto set tags on startup
 autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif  "auto add cscope on startup
-  " Highlight word under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+  " Highlight word under cursor when it holds for more than 250ms
+set updatetime=250
+autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 "-------------------------------------------------------------------------------
 "" Colors & Formatting
