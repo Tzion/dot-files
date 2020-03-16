@@ -127,4 +127,11 @@ noremap <leader>cd :cscope find d <cword><CR> :copen<CR>
 noremap <leader>cg :cscope find g <cword><CR> :copen<CR>
 noremap <leader>ca :cscope find a <cword><CR> :copen<CR>
 noremap <leader>cs :cscope find s <cword><CR> :copen<CR>
-set cscopequickfix=c-,d-,g-,a-,s-    " Insert cscope find results to quicklist after clear previos results
+noremap <leader>cf :cscope find f <cword><CR> 
+set cscopequickfix=c-,d-,g-,a-,s-,    " Insert cscope find results to quicklist after clear previos results
+nnoremap <tab>j <c-w>j
+nnoremap <tab>k <c-w>k
+nnoremap <tab>l <c-w>l
+nnoremap <tab>h <c-w>h
+nnoremap <space> <c-d>
+nnoremap qqq :q<CR>
