@@ -102,17 +102,21 @@ vnoremap <Leader>s y:Ags<Space><C-R>='"' . escape(@", '"*?()[]{}.') . '"'<CR><CR
 nnoremap <Leader>a :Ags<Space>
 " Quit Ags
 nnoremap <Leader><Leader>a :AgsQuit<CR>
+autocmd VimEnter * :NeoCompleteEnable
+let g:gitgutter_preview_win_floating = 1
 
 "------------------------------------------------------------------------------
 "" Key Bindings
 "-----------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
 map <F6>  :NERDTreeToggle<CR>
+map <F7> :Vista!!<CR>
 
 " Smart preview in quickfix list
-noremap <expr> p &buftype==# 'quickfix' ? "\<CR><C-W><C-W>" : 'p'
-map <expr> J &buftype==# 'quickfix' ? 'jp' : 'J'
-map <expr> K &buftype==# 'quickfix' ? 'kp' : 'J'
+augroup qfpreview
+  autocmd!
+  autocmd FileType qf nmap <buffer> p <plug>(qf-preview-open)
+augroup END
 
 " Search in all proejct (vimgrep), jump to first result and open quickfix list
 noremap <expr> <Leader>f ":vimgrep /".input("Find Everywhere: ")."/ **\<ESC>:copen<CR>"
