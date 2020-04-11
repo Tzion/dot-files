@@ -1,5 +1,6 @@
 filetype plugin indent on
 
+set nocompatible
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set wildmode=longest:full,full        " Autocomplete - first <Tab> press - complete the longest match and pop wildmenu, second press - swipe between the options
@@ -86,6 +87,7 @@ Plug 'liuchengxu/vista.vim' "View and search LSP symbols, tags
 Plug 'airblade/vim-gitgutter' "Show git diff and more git stuff
 Plug 'shougo/neocomplete.vim' "Auto completetion pluging
 Plug 'bfrg/vim-qf-preview'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call plug#end()
 
 "-------------------------------------------------------------------------------
