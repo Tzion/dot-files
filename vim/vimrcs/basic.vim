@@ -27,7 +27,11 @@ set number                            " Show line numbers
 set cursorline                        "  Highlight the text line of the cursor with CursorLine hl-CursorLine
 
 " Persistent undo
-set undodir=~/.vim/undo/
+let undodir_path = vim_path . "undo_dir/"
+if !isdirectory(undodir_path)
+    call mkdir(undodir_path, "", 0700)
+endif
+set undodir=undodir_path
 set undofile
 set undolevels=1000
 set undoreload=10000
@@ -37,7 +41,6 @@ set wildignore+=*.so
 set wildignore+=*.zip
 set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
-
 set wildignore+=*/cscope.out
 set wildignore+=*/tags
 

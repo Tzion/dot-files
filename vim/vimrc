@@ -1,7 +1,9 @@
-let config_path = "~/dot-files/vim" " assign it dyamically
+let vim_path  = '~/dot-files/vim/'  " TODO assign dynamically 
 set runtimepath+=~/dot-files/vim
 
 set nocompatible
-source vimrcs/basic.vim
-source vimrcs/extended.vim
-source vimrcs/plugins.vim
+
+exec "source" . vim_path . "/vimrcs/basic.vim"
+exec "source" . vim_path. "/vimrcs/extended.vim"
+exec "source" . vim_path . "/vimrcs/plugins.vim"
+
