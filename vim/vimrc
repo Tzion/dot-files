@@ -1,5 +1,5 @@
-let vim_path  = '~/dot-files/vim/'  " TODO assign dynamically 
-set runtimepath+=~/dot-files/vim
+let vim_path  = $HOME."/dot-files/vim/"  " TODO assign dynamically 
+set runtimepath+=vim_path
 
 set nocompatible
 

@@ -29,12 +29,13 @@ set cursorline                        "  Highlight the text line of the cursor w
 " Persistent undo
 let undodir_path = vim_path . "undo_dir/"
 if !isdirectory(undodir_path)
-    call mkdir(undodir_path, "", 0700)
+    call mkdir(undodir_path, "", 0770)
 endif
 set undodir=undodir_path
 set undofile
 set undolevels=1000
 set undoreload=10000
+
 " Ignored files/directories from autocomplete (and CtrlP)
 set wildignore+=*/tmp/*
 set wildignore+=*.so
@@ -44,11 +45,6 @@ set wildignore+=*/node_modules/
 set wildignore+=*/cscope.out
 set wildignore+=*/tags
 
-autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif                "auto set tags on startup
-autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif  "auto add cscope on startup
-  " Highlight word under cursor when it holds for more than 250ms
-set updatetime=250
-autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 "-------------------------------------------------------------------------------
 "" Colors & UI
