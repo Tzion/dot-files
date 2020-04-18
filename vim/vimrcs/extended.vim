@@ -11,8 +11,9 @@ noremap <expr> <Leader>f ":vimgrep /".input("Find Everywhere: ")."/ **\<ESC>:   
 set updatetime=250
 autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
-" ctags and cscope
-  " cscope find of word under cursor - results in quickfix:
+" cscope 
+  " cscope find of word under cursor - results in quickfix TODO if gutentags_plus does it better delete these mappings (use
+" same keys)
  noremap <leader>cc :cscope find c <cword><CR> :copen<CR>
  noremap <leader>cd :cscope find d <cword><CR> :copen<CR>
  noremap <leader>cg :cscope find g <cword><CR> :copen<CR>
@@ -20,8 +21,6 @@ autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cw
  noremap <leader>cs :cscope find s <cword><CR> :copen<CR>
  noremap <leader>cf :cscope find f <cword><CR>
  set cscopequickfix=c-,d-,g-,a-,s-,    " Insert cscope find results to quicklist after  clear previos results
-autocmd VimEnter * if filereadable('tags') | execute "set tags=tags" |endif                "auto set tags on startup
-autocmd VimEnter * if filereadable('cscope.out') | execute "cscope add cscope.out" |endif  "auto add cscope on startup
 
  
   " easy navigate between and inside windows

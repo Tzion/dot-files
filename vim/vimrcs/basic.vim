@@ -43,7 +43,6 @@ set wildignore+=*.zip
 set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
 set wildignore+=*/cscope.out
-set wildignore+=*/tags
 
 
 "-------------------------------------------------------------------------------
