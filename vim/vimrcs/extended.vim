@@ -30,5 +30,3 @@ autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cw
  nnoremap <tab>h <c-w>h
  nnoremap <space> <c-d>
 
-  " easier close buffer
- nnoremap qqq :q<CR>

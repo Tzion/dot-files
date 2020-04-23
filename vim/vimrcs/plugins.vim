@@ -28,11 +28,67 @@ Plug 'shougo/neocomplete.vim' "Auto completetion pluging
 Plug 'bfrg/vim-qf-preview'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'pechorin/any-jump.vim'  " go-to-definition/find-references
+
+ " language server protocols
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', }
+" other plugin - TODO try later
+""Plug 'prabirshrestha/async.vim'
+""Plug 'prabirshrestha/vim-lsp'
 call plug#end()
+
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
+
+ " LanguageClient-neovim
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap ,h :call LanguageClient#textDocument_hover()<CR>
+nnoremap ,d :call LanguageClient#textDocument_definition()<CR>
+nnoremap ,td :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap ,i :call LanguageClient#textDocument_implementation()<CR>
+nnoremap ,r :call LanguageClient#textDocument_references()<CR>
+nnoremap ,s :call LanguageClient#workspace_symbol()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" second plugin - todo try later
+""if executable('pyls')
+""    " pip install python-language-server
+""    au User lsp_setup call lsp#register_server({
+""        \ 'name': 'pyls',
+""        \ 'cmd': {server_info->['pyls']},
+""        \ 'whitelist': ['python'],
+""        \ })
+""endif
+""
+""function! s:on_lsp_buffer_enabled() abort
+""    setlocal omnifunc=lsp#complete
+""    setlocal signcolumn=yes
+""    nmap <buffer> gd <plug>(lsp-definition)
+""    nmap <buffer> <f2> <plug>(lsp-rename)
+""    " refer to doc to add more commands
+""endfunction
+""
+""augroup lsp_install
+""    au!
+""    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+""    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+""augroup END
+""
+
+
  " gutentags_plus
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " use ctags and  gtags module
 let g:gutentags_project_root = ['.root'] " config project root markers.
@@ -44,6 +100,12 @@ let g:gutentags_define_advanced_commands = 1 " debugging commands: GutentagsTogg
 autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.out" | endif         "auto load CCTree on startup
 let g:CCTreeRecursiveDepth=0  " CCTree shows in default first degree callers/callee
 
+" vim-qf-preview
+"
+let g:qfpreview = {'height': '22', 'offset':'1', 'number': 1, 'sign': {'text': '>>', 'texthl': 'Search'}}
+
+" NERDTree
+let g:NERDTreeWinSize=23
 
 " Ag shortcut mappings
 " Search for the word under cursor
