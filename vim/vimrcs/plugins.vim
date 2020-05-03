@@ -9,38 +9,39 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'  " File system explorer
-Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'  " Full path fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'gabesoft/vim-ags'
 Plug 'hari-rangarajan/CCTree'
 Plug 'vim-airline/vim-airline'
-Plug 'majutsushi/tagbar' " browse the tags of the current file, overview of its structure
+Plug 'majutsushi/tagbar' " Browse the tags of the current file, overview of its structure
 Plug 'yssl/QFEnter'
 Plug 'bfrg/vim-qf-preview'
 Plug 'w0rp/ale'
 "Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
-Plug 'camspiers/lens.vim' "Automatically resizes windows
-Plug 'camspiers/animate.vim'  " Animation for windows movments when using lens
-Plug 'liuchengxu/vista.vim' "View and search LSP symbols, tags
+"Plug 'camspiers/lens.vim' "Automatically resizes windows
+"Plug 'camspiers/animate.vim'  " Animation for windows movments when using lens
+"Plug 'liuchengxu/vista.vim' "View and search LSP symbols, tags
 Plug 'airblade/vim-gitgutter' "Show git diff and more git stuff
 Plug 'shougo/neocomplete.vim' "Auto completetion pluging
 Plug 'ludovicchabant/vim-gutentags' " Seemless and auto tags management (dependent on ctags)
 Plug 'skywind3000/gutentags_plus' " helps gutentags to show better results using gtags (depented on gtags)
 Plug 'pechorin/any-jump.vim'  " go-to-definition/find-references
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'davidhalter/jedi-vim' " lsp-like features for python
-"
+
  " language server protocols
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-call plug#end()
 
+" Python specific
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'davidhalter/jedi-vim' " lsp-like features for python
+call plug#end()
 
 "-------------------------------------------------------------------------------
 "" Plugins preferences
 "-------------------------------------------------------------------------------
 
-""""""""""""""""""""""""" vim-lsp
+""""""""""""""""""""" vim-lsp
 " set LSP for python
 if executable('pyls')
     " pip install python-language-server

@@ -1,4 +1,4 @@
-  " Smart preview in quickfix list
+  " Smart preview in quickfix List
 augroup qfpreview
   autocmd!
   autocmd FileType qf nmap <buffer> p <plug>(qf-preview-open)
@@ -24,9 +24,20 @@ autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cw
 
  
   " easy navigate between and inside windows
- nnoremap <tab>j <c-w>j
- nnoremap <tab>k <c-w>k
- nnoremap <tab>l <c-w>l
- nnoremap <tab>h <c-w>h
- nnoremap <space> <c-d>
+nnoremap <tab>j <c-w>j
+nnoremap <tab>k <c-w>k
+nnoremap <tab>l <c-w>l
+nnoremap <tab>h <c-w>h
 
+" down half screen
+nnoremap <space> <c-d>
+" easy swipe between recent windows
+nnoremap  <tab><tab> <c-w>p
+
+" Easy closing nearby windows
+nnoremap Zj <c-w>jZZ
+nnoremap Zk <c-w>kZZ
+nnoremap Zl <c-w>lZZ
+nnoremap Zh <c-w>hZZ
+
+nnoremap <leader>l :buffers<CR>:buffer<space>
