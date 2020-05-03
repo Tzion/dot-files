@@ -1,8 +1,5 @@
-  " Smart preview in quickfix List
-augroup qfpreview
-  autocmd!
-  autocmd FileType qf nmap <buffer> p <plug>(qf-preview-open)
-augroup END
+" open quickfix at bottom taking full space
+autocmd FileType qf wincmd J
 
   " Search in all proejct (vimgrep), jump to first result and open quickfix list
 noremap <expr> <Leader>f ":vimgrep /".input("Find Everywhere: ")."/ **\<ESC>:          copen<CR>"

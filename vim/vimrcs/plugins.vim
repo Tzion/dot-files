@@ -103,7 +103,11 @@ autocmd VimEnter * if filereadable('cscope.out') | execute "CCTreeLoadDB cscope.
 let g:CCTreeRecursiveDepth=0  " CCTree shows in default first degree callers/callee
 
 " vim-qf-preview
-"
+ " Smart preview in quickfix List
+augroup qfpreview
+  autocmd!
+  autocmd FileType qf nmap <buffer> p <plug>(qf-preview-open)
+augroup END
 let g:qfpreview = {'height': '22', 'offset':'1', 'number': 1, 'sign': {'text': '>>', 'texthl': 'Search'}}
 
 " NERDTree
