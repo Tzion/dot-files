@@ -82,14 +82,13 @@ nmap <Leader>th <plug>(lsp-type-hierarchy)
 
 
 """"" JEDI
-let mapleader = "," 
-let g:jedi#goto_command="<leader>d"
-let g:jedi#usages_command="<leader>r"
-let g:jedi#goto_stubs_command="<leader>s"
-let g:jedi#documentation_command="<leader>K"
-
-let mapleader = "\\"
-
+let maplocalleader = "," 
+let g:jedi#goto_command="<localleader>d"
+let g:jedi#usages_command="<localleader>r"
+let g:jedi#goto_stubs_command="<localleader>s"
+let g:jedi#documentation_command="<localleader>K"
+let g:jedi#goto_assignments_command=''
+let g:jedi#rename_command=''
 
 """"""""""""""" gutentags_plus
 let g:gutentags_modules = ['ctags', 'gtags_cscope'] " use ctags and  gtags module
