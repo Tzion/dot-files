@@ -58,3 +58,18 @@ hi StatusLineNC ctermfg=green
 hi Search ctermbg=yellow ctermfg=black
 
 
+"-------------------------------------------------------------------------------
+"" Key Bindings
+"-------------------------------------------------------------------------------
+
+" easy navigate between and inside windows
+nnoremap <tab>j <c-w>j
+nnoremap <tab>k <c-w>k
+nnoremap <tab>l <c-w>l
+nnoremap <tab>h <c-w>h
+
+" down half screen
+nnoremap <space> <c-d>
+" easy swipe between recent windows
+nnoremap  <tab><tab> <c-w>p
+

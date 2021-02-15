@@ -20,17 +20,6 @@ autocmd CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cw
  set cscopequickfix=c-,d-,g-,a-,s-,    " Insert cscope find results to quicklist after  clear previos results
 
  
-  " easy navigate between and inside windows
-nnoremap <tab>j <c-w>j
-nnoremap <tab>k <c-w>k
-nnoremap <tab>l <c-w>l
-nnoremap <tab>h <c-w>h
-
-" down half screen
-nnoremap <space> <c-d>
-" easy swipe between recent windows
-nnoremap  <tab><tab> <c-w>p
-
 " Easy closing nearby windows
 nnoremap Zj <c-w>jZZ
 nnoremap Zk <c-w>kZZ
