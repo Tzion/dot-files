@@ -1,0 +1,35 @@
+{
+  "elliq_app_som": {
+    "title": "ElliQ app SOM",
+    "timestamp-format": [
+      "%Y-%m-%d %H:%M:%S.%L+%Z",
+      "%Y-%m-%d %H:%M:%S.%L-%Z"
+    ],
+    "regex": {
+      "ir-logcat-format": {
+        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d{3}(\\+|-)\\d{4})\\s(?<level>\\w+)/(?<thread>[^/]+)/(?<module>\\S+:)\\s*(?<subtag>\\S+:)?\\s*(?<body>.*)$"
+      }
+    },
+    "module-field": "module",
+    "opid-field": "thread",
+    "level-field": "level",
+    "level": {
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "debug": "Debug",
+      "trace": "Verbose"
+    },
+    "value": {
+      "thread": {"kind": "string", "identifier": true},
+      "module": {"kind": "string", "identifier": true},
+      "subtag": {"kind": "string", "identifier": true},
+      "level": {"kind": "string", "identifier": true}
+    },
+    "sample": [
+      {
+        "line": "2020-11-11 23:55:04.865+0500 Info/ir-scheduler#36/elliq-module: Dispatching global event: Received ServiceClientFact"
+      }
+    ]
+  }
+}
