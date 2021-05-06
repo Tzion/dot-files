@@ -1,0 +1,1 @@
+alias vipython='ipython --TerminalInteractiveShell.editing_mode=vim'
