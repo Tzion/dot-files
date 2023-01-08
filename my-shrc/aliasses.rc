@@ -1,1 +1,2 @@
 alias vipython='ipython --TerminalInteractiveShell.editing_mode=vim'
+alias jq='pbpaste | jq -C | less'
