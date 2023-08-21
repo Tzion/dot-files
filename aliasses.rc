@@ -1,0 +1,3 @@
+alias vipython='ipython --TerminalInteractiveShell.editing_mode=vim'
+alias jq='pbpaste | jq -C | less'
+alias rename_latest='mv $(ls -t | head -1) $1'
