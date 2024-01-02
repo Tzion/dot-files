@@ -25,6 +25,3 @@ make_clipboard_shell_friendly() {
     # Output the escaped string
     echo "$ESCAPED_CONTENT"
 }
-
-# Alias to make clipboard content shell-friendly
-alias shell_friendly_clipboard='make_clipboard_shell_friendly'

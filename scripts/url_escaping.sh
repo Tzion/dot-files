@@ -6,7 +6,7 @@ PINK="\033[1;95m"    # Bright pink
 RESET="\033[0m"
 
 
-unescape() {
+unescape_url() {
 	if [ -n "$1" ]; then
 		url=$(echo -n "$1")
 	else
@@ -19,6 +19,3 @@ unescape() {
 	echo -n "$result" | pbcopy
 	printf "${GREEN}Copied to clipboard${RESET}\n"
 }
-
-alias url_unescaping="unescape"
-
