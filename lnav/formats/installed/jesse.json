@@ -1,0 +1,29 @@
+{
+	"jesse" : {
+		"title"			: "Jesse logs",
+		"description"	: "Jesse backtesting and algotrading repo logs",
+		"regex" : { 
+			"default": { "pattern" : "^\\[(?<level>\\w+)\\s\\|\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})\\]\\s(?<body>[^={3,5}].*)$" },
+			"ticker": {"pattern" : "^\\[(?<level>\\w+)\\s\\|\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})\\]\\s={3,5}\\s(?<symbol>\\w{2,5}-\\w{2,5})(?<body>.*)$"}
+		},
+
+		"level": {
+			"error": "ERROR",
+			"warning": "WARNING",
+			"info": "INFO"
+		},
+		"timestamp-field" : "timestamp", // default value
+		"timestamp-format": "%y-%m-%dT%H:%M:%S", // doesn't do anything - maybe is not defined well
+		"value": {
+			"symbol": { "kind": "string", "identifier": true },
+			"body": { "kind": "string", "identifier": false }
+		},
+		"sample" : [
+			{
+				"line" 	: "[INFO | 2024-01-15T20:00:00] ==== BNB-USDT | 2024-01-15T19:00 | 317.7 | 318.4 | 319.0 | 317.4 | 41719.63",
+				"line" 	: "[INFO | 2024-03-06T00:00:00] ==== XRP-USDT | 2024-03-05T20:00 | 0.5674 | 0.5912 | 0.5951 | 0.5594 | 286399266.0"
+			}
+		]
+	}
+}
+
