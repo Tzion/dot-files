@@ -1,0 +1,50 @@
+alias gclogs="gcloud beta logging read"
+alias gclogs-error="gcloud beta logging read 'severity >= ERROR'"
+alias gclogs-format="gcloud beta logging read --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
+alias gclogs-tail="gcloud beta logging tail --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
+alias gclogs-tail-error="gcloud beta logging tail 'severity >= ERROR' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
+
+
+
+
+alias gclogs-help='echo "
+Quick (non-officail) Instructions for gcloud logging:
+[for full instructions: $ gcloud beta logging read --help]
+
+Relevant Flags:
+- --format: Specify the output format. Use \"table\", \"json\", \"value\" and more.
+- --limit: Limit the number of log entries returned.
+- --freshness: Filter logs by their recency (e.g., --freshness=24h).
+
+Examples:
+
+- Read Logs:  
+  $ gcloud beta logging read --format=\"table(timestamp, logName, textPayload)\" --limit=100
+
+- Filter by Severity (Error Logs):  
+  $ gcloud beta logging read '\''severity >= ERROR'\''
+
+- Filter by Log Name: 
+  $ gcloud beta logging read '\''logName:\"requests\"'\''
+
+- Freshness (Last 24 Hours):  
+  $ gcloud beta logging read --freshness=24h
+
+- Stream Logs (Real-Time):  
+  $ gcloud beta logging tail --format=\"value(timestamp, logName, textPayload)\"
+
+- Exclude Logs:  
+  $ gcloud beta logging read '\''NOT (resource.labels.database_id=\"tms-c6:tms-db-dev\")'\''
+
+- Read up to 10 entries after a given timestamp, containing payloads that include the word ‘placementId’ and format the output in YAML:
+  $ gcloud beta logging read '\''
+    timestamp >=\"2023-01-01T00:00:00Z\" AND
+    textPayload:placementId
+  '\'' --limit=10 --format=yaml
+
+- See all available logs (field logName):
+  $ gcloud beta logging logs list
+
+- To verify the project is configured well run:
+  $ gcloud config list
+"'
