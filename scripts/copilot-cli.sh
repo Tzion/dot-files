@@ -144,3 +144,5 @@ ghce() {
 
 alias explain='ghce'
 alias suggest='ghcs'
+alias how=suggest
+alias why=explain
