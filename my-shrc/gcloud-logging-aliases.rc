@@ -1,5 +1,6 @@
 alias gclogs="gcloud beta logging read"
 alias gclogs-error="gcloud beta logging read 'severity >= ERROR'"
+alias gclogs-warning="gcloud beta logging read 'severity >= WARNING'"
 alias gclogs-format="gcloud beta logging read --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
 alias gclogs-tail="gcloud beta logging tail --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
 alias gclogs-tail-error="gcloud beta logging tail 'severity >= ERROR' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
