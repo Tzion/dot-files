@@ -1,3 +1,4 @@
+# DEPRECATED
 ghcs() {
 	TARGET="shell"
 	local GH_DEBUG="$GH_DEBUG"
@@ -84,6 +85,7 @@ ghcs() {
 	fi
 }
 
+# DEPRECATED
 ghce() {
 	local GH_DEBUG="$GH_DEBUG"
 	local GH_HOST="$GH_HOST"
@@ -144,5 +146,10 @@ ghce() {
 
 alias explain='ghce'
 alias suggest='ghcs'
-alias how=suggest
-alias why=explain
+
+pilot() {
+    copilot --model claude-haiku-4.5 -p "$*"
+}
+
+alias how='pilot "brief terminal command only: "'
+alias why='pilot "concise: what does this command do: "'
