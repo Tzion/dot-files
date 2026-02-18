@@ -1,10 +1,14 @@
 alias gclogs="gcloud beta logging read"
+alias gclogs-dev="gcloud beta logging read 'resource.labels.service_name="tms-dev"'"
 alias gclogs-error="gcloud beta logging read 'severity >= ERROR'"
 alias gclogs-warning="gcloud beta logging read 'severity >= WARNING'"
+alias gclogs-dev-format="gcloud beta logging read 'resource.labels.service_name="tms-dev"' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
 alias gclogs-format="gcloud beta logging read --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
 alias gclogs-tail="gcloud beta logging tail --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
-alias gclogs-tail-error="gcloud beta logging tail 'severity >= ERROR' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
-
+alias gclogs-dev-tail="gcloud beta logging tail 'resource.labels.service_name="tms-dev"' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
+alias gclogs-error-tail="gcloud beta logging tail 'severity >= ERROR' --format='value(receiveTimestamp,  resource.labels.service_name, resource.type, labels.managed-by, logName, textPayload)'" 
+alias gclogs-requests="gcloud beta logging read "logName:requests" --format='default(timestamp, severity, httpRequest.referer, httpRequest.latency, httpRequest.requestUrl, httpRequest.status)'"
+alias gclogs-requests-tail="gcloud beta logging tail "logName:requests""
 
 
 

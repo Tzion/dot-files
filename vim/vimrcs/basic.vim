@@ -44,6 +44,8 @@ set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
 set wildignore+=*/cscope.out
 
+set clipboard=unnamedplus
+
 
 "-------------------------------------------------------------------------------
 "" Colors & UI
