@@ -7,8 +7,9 @@ done
 ARGS=()
 for arg in "$@"; do [[ "$arg" != -* ]] && ARGS+=("$arg"); done
 
-if [[ ${#ARGS[@]} -lt 3 ]]; then
-    echo "Usage: $(basename "$0") [-n] SYMBOL DATE TIME [INTERVAL]"
+if [[ ${#ARGS[@]} -lt 1 ]]; then
+    echo "Usage: $(basename "$0") [-n] SYMBOL [DATE TIME] [INTERVAL]"
+    echo "  $(basename "$0") SPY                     (open chart only)"
     echo "  $(basename "$0") LUV 25-02-12 12:33 3"
     echo "  $(basename "$0") LUV 2025-02-12 1233"
     echo "  $(basename "$0") LUV 25-02-12 12:33    (defaults to 3min)"
@@ -18,13 +19,12 @@ if [[ ${#ARGS[@]} -lt 3 ]]; then
     echo "  -n, --new    Open in a new tab (default: reuse existing TradingView tab)"
     exit 0
 fi
-SYMBOL="${ARGS[0]}" RAW_DATE="${ARGS[1]}" RAW_TIME="${ARGS[2]}" INTERVAL="${ARGS[3]:-3}"
-[[ ${RAW_DATE:2:1} == "-" ]] && DATE="20${RAW_DATE}" || DATE="$RAW_DATE"
-[[ "$RAW_TIME" != *":"* ]] && TIME="${RAW_TIME:0:2}:${RAW_TIME:2:2}" || TIME="$RAW_TIME"
+SYMBOL="${ARGS[0]}" RAW_DATE="${ARGS[1]:-}" RAW_TIME="${ARGS[2]:-}" INTERVAL="${ARGS[3]:-3}"
+[[ -n "$RAW_DATE" && ${RAW_DATE:2:1} == "-" ]] && DATE="20${RAW_DATE}" || DATE="$RAW_DATE"
+[[ -n "$RAW_TIME" && "$RAW_TIME" != *":"* ]] && TIME="${RAW_TIME:0:2}:${RAW_TIME:2:2}" || TIME="$RAW_TIME"
 
 TV_URL="https://www.tradingview.com/chart/?symbol=${SYMBOL}&interval=${INTERVAL}"
 
-# Use trading view tab or open a new one
 if $NEW_TAB; then
     open "$TV_URL"
 else
@@ -54,6 +54,7 @@ fi
 sleep 1.8
 
 # Automate chart Go-To (alt+G) to jump to bar
+if [[ -n "$DATE" && -n "$TIME" ]]; then
 export TV_DATE="$DATE" TV_TIME="$TIME"
 osascript <<'EOF'
 tell application "System Events"
@@ -72,3 +73,4 @@ tell application "System Events"
     key code 36 -- Enter
 end tell
 EOF
+fi
