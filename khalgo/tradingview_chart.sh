@@ -8,8 +8,9 @@ ARGS=()
 for arg in "$@"; do [[ "$arg" != -* ]] && ARGS+=("$arg"); done
 
 if [[ ${#ARGS[@]} -lt 1 ]]; then
-    echo "Usage: $(basename "$0") [-n] SYMBOL [DATE TIME] [INTERVAL]"
+    echo "Usage: $(basename "$0") [-n] SYMBOL [DATE [TIME]] [INTERVAL]"
     echo "  $(basename "$0") SPY                     (open chart only)"
+    echo "  $(basename "$0") LUV 25-02-12            (go to date)"
     echo "  $(basename "$0") LUV 25-02-12 12:33 3"
     echo "  $(basename "$0") LUV 2025-02-12 1233"
     echo "  $(basename "$0") LUV 25-02-12 12:33    (defaults to 3min)"
@@ -54,7 +55,7 @@ fi
 sleep 1.8
 
 # Automate chart Go-To (alt+G) to jump to bar
-if [[ -n "$DATE" && -n "$TIME" ]]; then
+if [[ -n "$DATE" ]]; then
 export TV_DATE="$DATE" TV_TIME="$TIME"
 osascript <<'EOF'
 tell application "System Events"
@@ -68,8 +69,8 @@ tell application "System Events"
         delay 0.2
         keystroke "a" using command down
         keystroke (system attribute "TV_TIME")
+    	key code 36 -- Enter
     end if
-    key code 36 -- Enter
     key code 36 -- Enter
 end tell
 EOF
