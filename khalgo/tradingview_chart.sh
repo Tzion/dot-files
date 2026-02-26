@@ -21,7 +21,13 @@ if [[ ${#ARGS[@]} -lt 1 ]]; then
     exit 0
 fi
 SYMBOL="${ARGS[0]}" RAW_DATE="${ARGS[1]:-}" RAW_TIME="${ARGS[2]:-}" INTERVAL="${ARGS[3]:-3}"
-[[ -n "$RAW_DATE" && ${RAW_DATE:2:1} == "-" ]] && DATE="20${RAW_DATE}" || DATE="$RAW_DATE"
+if [[ -n "$RAW_DATE" ]]; then
+    d="${RAW_DATE//-/}"  # strip dashes
+    [[ ${#d} -le 6 ]] && d="20$d"
+    DATE="${d:0:4}-${d:4:2}-${d:6:2}"
+else
+    DATE=""
+fi
 [[ -n "$RAW_TIME" && "$RAW_TIME" != *":"* ]] && TIME="${RAW_TIME:0:2}:${RAW_TIME:2:2}" || TIME="$RAW_TIME"
 
 TV_URL="https://www.tradingview.com/chart/?symbol=${SYMBOL}&interval=${INTERVAL}"
@@ -60,15 +66,16 @@ export TV_DATE="$DATE" TV_TIME="$TIME"
 osascript <<'EOF'
 tell application "System Events"
     key code 5 using option down -- Alt+G
-    delay 1.5
+    delay 1.0
     keystroke "a" using command down
+    delay 0.6
     keystroke (system attribute "TV_DATE")
-    delay 0.1
+    delay 0.7
     if (system attribute "TV_TIME") is not "" then
         key code 48 -- Tab
-        delay 0.2
-        keystroke "a" using command down
+        delay 0.4
         keystroke (system attribute "TV_TIME")
+        delay 0.9
     	key code 36 -- Enter
     end if
     key code 36 -- Enter
