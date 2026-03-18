@@ -1,0 +1,72 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "khalgo_log": {
+        "title": "KH Algo Platform Log",
+        "description": "Log format for KH algo platform with general and strategy-specific messages",
+        "regex": {
+            "strategy": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+) - (?<symbol>[A-Z][A-Z0-9]*\\.?[A-Z0-9]*) (?<aut_ref>\\d+) (?<strategy_guid>[0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+) PlatformTime: \\S+ \\S+ \\[(?<level>[\\w]+)\\] (?<body>.*)"
+            },
+            "general": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+) - (?!\\S+ \\d+ [0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+)(?<body>.*)"
+            }
+        },
+        "level-field": "level",
+        "level": {
+            "error": "^Error$",
+            "warning": "^Warning$",
+            "info": "^Information$"
+        },
+        "opid-field": "symbol",
+        "timestamp-format": [
+            "%Y-%m-%d %H:%M:%S.%f"
+        ],
+        "value": {
+            "symbol": {
+                "kind": "string",
+                "identifier": true
+            },
+            "aut_ref": {
+                "kind": "string"
+            },
+            "strategy_guid": {
+                "kind": "string"
+            },
+            "body": {
+                "kind": "string"
+            }
+        },
+        "highlights": {
+            "timestamp": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+",
+                "color": "#00ff7f"
+            },
+            "level_error": {
+                "pattern": "\\[Error\\]",
+                "color": "#ff6c6b"
+            },
+            "level_info": {
+                "pattern": "\\[Information\\]",
+                "color": "#98be65"
+            },
+            "level_warning": {
+                "pattern": "\\[Warning\\]",
+                "color": "#ecbe7b"
+            }
+        },
+        "sample": [
+            {
+                "line": "2026-03-18 18:06:03.657469 - Symbols for BackTest run: ZION,FCX,MS",
+                "level": "info"
+            },
+            {
+                "line": "2026-03-18 18:06:08.287881 - ZION 7050481 ad508d92-050f-4837-a24a-bf2cda04258f PlatformTime: 0001-01-01 00:00:00.0000000 [Information] Set config called 0 market map",
+                "level": "info"
+            },
+            {
+                "line": "2026-03-18 18:06:08.296189 - ZION 7050481 ad508d92-050f-4837-a24a-bf2cda04258f PlatformTime: 0001-01-01 00:00:00.0000000 [Error] Something went wrong",
+                "level": "error"
+            }
+        ]
+    }
+}
